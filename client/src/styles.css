@@ -4,3 +4,9 @@ body {
     margin: 0; 
     font-family: 'Arial';
 }
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

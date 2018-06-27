@@ -1,10 +1,24 @@
-
-
-
-<div>
-  <form>
-    
-  </form>
-  <button mat-button routerLink="/main">Login</button>
-  <button mat-button routerLink="/register">Register</button>
+<div class="flex-container" color="primary">
+  <div class="login-card">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>MEAN Stack with Angular 2!</mat-card-title>
+        <mat-card-subtitle>Login</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Email">
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput placeholder="Password">
+          </mat-form-field>
+          <br/>
+          <button mat-raised-button routerLink="/main" color="primary">Login</button>
+          <button mat-button routerLink="/register">Register</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

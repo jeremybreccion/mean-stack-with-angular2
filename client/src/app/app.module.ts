@@ -4,7 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatButtonModule, MatToolbarModule } from '@angular/material';
+import { 
+  MatButtonModule, 
+  MatToolbarModule, 
+  MatCardModule, 
+  MatInputModule,
+  MatFormFieldModule 
+} from '@angular/material';
+
 import { HomeComponent } from './components/home/home.component';
 import { AppRouterModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
@@ -26,7 +33,10 @@ import { MainComponent } from './components/main/main.component';
     BrowserAnimationsModule,
     AppRouterModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
