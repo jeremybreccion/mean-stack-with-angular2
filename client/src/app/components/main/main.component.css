@@ -1,0 +1,8 @@
+.toolbar-spacer {
+    flex: 11 auto;
+}
+
+.content-page {
+    margin: 10;
+    padding: 10;
+}
