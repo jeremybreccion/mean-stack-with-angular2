@@ -8,8 +8,10 @@
       <mat-card-content>
         <form>
           <mat-form-field>
-            <input matInput placeholder="Email" required>
-
+            <input matInput placeholder="Email" required ngModel name="registerForm.email" #email="ngModel">
+              <mat-error *ngIf="email.errors.required">Please enter a value</mat-error>
+<!--               <mat-error *ngIf="email.errors.email">Please enter a valid email address</mat-error>
+ -->           
           </mat-form-field>
           <br/>
           <mat-form-field>

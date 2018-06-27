@@ -12,6 +12,8 @@ import {
   MatFormFieldModule 
 } from '@angular/material';
 
+import { FormsModule } from '@angular/forms';
+
 import { HomeComponent } from './components/home/home.component';
 import { AppRouterModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
@@ -36,7 +38,8 @@ import { MainComponent } from './components/main/main.component';
     MatToolbarModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
