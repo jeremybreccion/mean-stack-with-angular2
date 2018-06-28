@@ -5,31 +5,39 @@
         <mat-card-title>MEAN Stack with Angular 2!</mat-card-title>
         <mat-card-subtitle>Register</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <form>
+      <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && register()">
+        <mat-card-content>
           <mat-form-field>
-            <input matInput placeholder="Email" required ngModel name="registerForm.email" #email="ngModel">
-              <mat-error *ngIf="email.errors.required">Please enter a value</mat-error>
-<!--               <mat-error *ngIf="email.errors.email">Please enter a valid email address</mat-error>
- -->           
+            <input matInput placeholder="Email" name="email" [(ngModel)]="registerClass.email" #email="ngModel" required email>
+            <mat-error *ngIf="email.errors?.required">Please enter a value</mat-error>
+            <mat-error *ngIf="email.errors?.email">Please enter a valid email address</mat-error>
+
+            <!--               <mat-error *ngIf="emailFormControl.hasError('email')">Please enter a valid email address</mat-error>
+ -->
           </mat-form-field>
           <br/>
           <mat-form-field>
-            <input matInput placeholder="Nickname" required>
+            <input matInput placeholder="Nickname" [(ngModel)]="registerClass.nickname" name="nickname" #nickname="ngModel" required>
+            <mat-error *ngIf="nickname.errors?.required">Please enter a value</mat-error>
           </mat-form-field>
           <br/>
           <mat-form-field>
-            <input matInput placeholder="Password" required>
+            <input matInput placeholder="Password" [(ngModel)]="registerClass.password" name="password" #password="ngModel" required>
+            <mat-error *ngIf="password.errors?.required">Please enter a value</mat-error>
           </mat-form-field>
           <br/>
           <mat-form-field>
-            <input matInput placeholder="Confirm Password" required>
+            <input matInput placeholder="Confirm Password" [(ngModel)]="registerClass.confirmPassword" name="confirmPassword" #confirmPassword="ngModel"
+              required>
+            <mat-error *ngIf="confirmPassword.errors?.required">Please enter a value</mat-error>
           </mat-form-field>
           <br/>
+        </mat-card-content>
+        <mat-card-actions>
           <button mat-raised-button color="primary" type="submit">Register</button>
           <button mat-button routerLink="/login">Go to Login</button>
-        </form>
-      </mat-card-content>
+        </mat-card-actions>
+      </form>
     </mat-card>
   </div>
 </div>

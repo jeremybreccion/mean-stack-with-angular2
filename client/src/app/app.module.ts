@@ -12,7 +12,7 @@ import {
   MatFormFieldModule 
 } from '@angular/material';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './components/home/home.component';
 import { AppRouterModule } from './app-routing.module';
@@ -39,7 +39,8 @@ import { MainComponent } from './components/main/main.component';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
