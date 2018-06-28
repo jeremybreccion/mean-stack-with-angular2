@@ -24,7 +24,7 @@
           </mat-form-field>
           <br/>
           <mat-form-field>
-            <input type="password" matInput placeholder="Confirm Password" [(ngModel)]="registerClass.confirmPassword" name="confirmPassword" #confirmPassword="ngModel"
+            <input type="password" matInput placeholder="Confirm Password" [(ngModel)]="tempConfirmPassword" name="confirmPassword" #confirmPassword="ngModel"
               appValidateEqual validateEqual="password" required>
             <mat-error *ngIf="confirmPassword.errors?.required">Please enter a value</mat-error>
             <mat-error *ngIf="confirmPassword.errors?.equal">Please enter the correct password</mat-error>

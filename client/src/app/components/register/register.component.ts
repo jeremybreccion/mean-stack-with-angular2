@@ -4,7 +4,6 @@ export class RegisterDetails {
   email: string;
   nickname: string;
   password: string;
-  confirmPassword: string;
 }
 
 @Component({
@@ -15,8 +14,6 @@ export class RegisterDetails {
 export class RegisterComponent implements OnInit {
 
   registerClass = new RegisterDetails();
-  //emailFormControl = new FormControl(this.registerClass.email, [Validators.required, Validators.email]);
-
 
   constructor() { }
 
