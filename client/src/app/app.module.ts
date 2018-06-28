@@ -20,6 +20,7 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MainComponent } from './components/main/main.component';
+import { ValidateEqualDirective } from './shared/validate-equal.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MainComponent } from './components/main/main.component';
     AboutComponent,
     LoginComponent,
     RegisterComponent,
-    MainComponent
+    MainComponent,
+    ValidateEqualDirective,
   ],
   imports: [
     BrowserModule,
