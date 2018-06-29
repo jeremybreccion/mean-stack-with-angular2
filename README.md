@@ -1,0 +1,2 @@
+# if cloning to another computer and there is no node_modules copied in angular directory
+if error 'Cannot find module...' during 'ng serve' or 'ng build' commands occur, run 'npm install' on the current directory
