@@ -1,9 +1,6 @@
-.register-card {
-    padding-top: 100px;
-    width: 400px;
-}
-
-.mat-card-content {
+.register-div {
     display: flex;
     flex-direction: column;
+    padding-top: 100px;
+    width: 400px;
 }
