@@ -1,9 +1,10 @@
 <div class="flex-container" color="primary">
   <div class="login-card">
-    <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()">
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login(loginForm)">
       <mat-form-field>
-        <input type="text" matInput placeholder="Email" [(ngModel)]="loginClass.username" name="username" #username="ngModel" required>
-        <mat-error *ngIf="username.errors?.required">Please enter a value</mat-error>
+        <input type="email" matInput placeholder="Email" [(ngModel)]="loginClass.email" name="email" #email="ngModel" required email>
+        <mat-error *ngIf="email.errors?.required">Please enter a value</mat-error>
+        <mat-error *ngIf="email.errors?.email">Please enter a valid email address</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field>

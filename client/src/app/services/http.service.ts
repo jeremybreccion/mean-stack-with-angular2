@@ -9,6 +9,11 @@ export class RegisterDetails {
   password: string;
 }
 
+export class LoginDetails {
+  email: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,15 +36,14 @@ export class HttpService {
   //if ng serve is used, you must declare the node server address
   domain = 'http://localhost:8080';
 
-  /* httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control'
-    })
-  } */
-
 
   register (registerDetails: RegisterDetails): Observable<RegisterDetails> {
     return this.http.post<RegisterDetails>(this.domain + '/users/register', registerDetails)
+    .pipe(catchError(this.handleError));
+  }
+
+  login (loginDetails: LoginDetails): Observable<LoginDetails> {
+    return this.http.post<LoginDetails>(this.domain + '/users/login', loginDetails)
     .pipe(catchError(this.handleError));
   }
 }

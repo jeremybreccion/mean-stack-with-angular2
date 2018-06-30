@@ -23,7 +23,25 @@ router.post('/register', (req, res) => {
 
         res.status(200).send();
     });
+});
 
+router.post('/login', (req, res) => {
+    models.User.findOne({ email: req.body.email }, (err, aUser) => {
+        if(err) {
+            console.log(err);
+            res.status(400).send(err);
+        //compare passwords here
+        } else if(aUser && bcrypt.compareSync(req.body.password, aUser.password)) {
+            //to manipulate results from mongoose, it must be converted to an object
+            aUser = aUser.toObject();
+            delete aUser.password;
+            res.status(200).send(aUser);
+        } else {
+            //incorrect input
+            console.log('username/password incorrect');
+            res.status(400).send({ AUTH_FAIL: true });
+        }
+    });
 });
 
 module.exports = router;
