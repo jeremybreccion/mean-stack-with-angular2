@@ -51,18 +51,19 @@ export class ValidateEqualDirective implements Validator {
     //input match
     if(compareTo && self.value === compareTo.value && this.isReverse()) {
       //delete errors
-      delete self.errors['equal'];
-      //
-      if(!Object.keys(self.errors).length) {
-        self.setErrors(null);
-      }
+      if(self && self.errors) {
+        delete self.errors['equal'];
+
+        if(!Object.keys(self.errors).length) {
+          self.setErrors(null);
+        }
+      }      
     }
 
     //input mismatch
     if(compareTo && self.value !== compareTo.value && this.isReverse()) {
       compareTo.setErrors({ equal: true });
     }
-
     return null;
   }
 
