@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       //put any to ignore LoginDetails class
       (res: any) => {
         console.log('logged in');
-        this.snackbarService.openSimpleSnackBar('Welcome, ' + res.nickname + '!');
+        this.snackbarService.openSimpleSnackBar('Welcome, ' + res.user.nickname + '!');
         this.router.navigateByUrl('/main/home');
       },
       err => {
