@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpService } from '../../services/http.service';
+import { AuthService } from '../../services/auth.service';
 import { SnackbarService } from '../../services/snackbar.service';
 import { Router } from '@angular/router';
 
@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
 
   loginClass = new LoginDetails();
 
-  constructor(private httpService: HttpService, private snackbarService: SnackbarService, private router: Router) { }
+  constructor(private authService: AuthService, private snackbarService: SnackbarService, private router: Router) { }
 
   ngOnInit() {
   }
 
   login(form: NgForm) {
     //use the form.value not the class itself
-    this.httpService.login(form.value).subscribe(
+    this.authService.login(form.value).subscribe(
       //put any to ignore LoginDetails class
       (res: any) => {
         console.log('logged in');

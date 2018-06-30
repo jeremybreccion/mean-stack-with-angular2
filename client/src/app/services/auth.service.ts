@@ -17,7 +17,7 @@ export class LoginDetails {
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class AuthService {
 
 
   private handleError(error: HttpErrorResponse) {

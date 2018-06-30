@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './services/http.service';
+import { AuthService } from './services/auth.service';
 
 import { SnackbarService } from './services/snackbar.service';
 
@@ -53,7 +53,7 @@ import { ValidateEqualDirective } from './directives/validate-equal.directive';
     HttpClientModule
   ],
   providers: [
-    HttpService,
+    AuthService,
     SnackbarService
   ],
   bootstrap: [
