@@ -1,11 +1,12 @@
 
 const express = require('express');
 const router = express.Router();
-const url = require('../config/database.json');
+const config = require('../config/config.json');
 const mongoose = require('mongoose');
-mongoose.connect(url.database);
+mongoose.connect(config.database);
 const models = require('../models/models');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
 
@@ -33,9 +34,11 @@ router.post('/login', (req, res) => {
         //compare passwords here
         } else if(aUser && bcrypt.compareSync(req.body.password, aUser.password)) {
             //to manipulate results from mongoose, it must be converted to an object
-            aUser = aUser.toObject();
-            delete aUser.password;
-            res.status(200).send(aUser);
+            /* aUser = aUser.toObject();
+            delete aUser.password; */
+            //generate jwt token
+            const token = jwt.sign({ userId: aUser._id }, config.token_secret, { expiresIn: config.token_expiration });
+            res.status(200).send({ user: aUser, token: token });
         } else {
             //incorrect input
             console.log('username/password incorrect');
