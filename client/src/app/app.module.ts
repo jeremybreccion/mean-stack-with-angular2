@@ -7,12 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 
+import { SnackbarService } from './services/snackbar.service';
+
 import { 
   MatButtonModule, 
   MatToolbarModule, 
   MatCardModule, 
   MatInputModule,
-  MatFormFieldModule 
+  MatFormFieldModule ,
+  MatSnackBarModule,
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -44,12 +47,14 @@ import { ValidateEqualDirective } from './directives/validate-equal.directive';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
-    HttpService
+    HttpService,
+    SnackbarService
   ],
   bootstrap: [
     AppComponent
