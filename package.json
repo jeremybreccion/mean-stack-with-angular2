@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/jeremybreccion/mean-stack-with-angular2#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongodb": "^3.1.0",
+    "mongoskin": "^2.1.0"
   }
 }
