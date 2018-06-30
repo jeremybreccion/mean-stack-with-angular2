@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
+import { SnackbarService } from '../../services/snackbar.service';
 
 
 export class RegisterDetails {
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   registerClass = new RegisterDetails();
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private snackbarService: SnackbarService) { }
 
   ngOnInit() {
   }
@@ -26,9 +27,16 @@ export class RegisterComponent implements OnInit {
   register(form: NgForm) {
     delete form.value.confirmPassword;
     //use the form.value not the class itself
-    this.httpService.register(form.value).subscribe(() => {
-      console.log('added');
-    });
+    this.httpService.register(form.value).subscribe(
+      data => {
+        console.log('added');
+        this.snackbarService.openSimpleSnackBar('Account registered!');
+      },
+      err => {
+        console.log('error', err);
+        this.snackbarService.openSimpleSnackBar('Error occurred!');
+      }
+    );
   }
 
 }
