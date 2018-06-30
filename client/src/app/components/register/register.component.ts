@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
+import { NgForm } from '@angular/forms';
+import { HttpService } from '../../services/http.service';
+
 
 export class RegisterDetails {
   email: string;
@@ -15,13 +18,17 @@ export class RegisterComponent implements OnInit {
 
   registerClass = new RegisterDetails();
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
   }
 
-  register() {
-    console.log(this.registerClass);
+  register(form: NgForm) {
+    delete form.value.confirmPassword;
+    //use the form.value not the class itself
+    this.httpService.register(form.value).subscribe(() => {
+      console.log('added');
+    });
   }
 
 }
