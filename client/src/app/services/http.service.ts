@@ -23,7 +23,7 @@ export class HttpService {
       console.log('error from server: ' + error.status + '\n' + error.error);
     }
 
-    return throwError('Error occurred');
+    return throwError(error);
   }
 
   constructor(private http: HttpClient) { }
@@ -39,7 +39,6 @@ export class HttpService {
 
 
   register (registerDetails: RegisterDetails): Observable<RegisterDetails> {
-    console.log(registerDetails);
     return this.http.post<RegisterDetails>(this.domain + '/users/register', registerDetails)
     .pipe(catchError(this.handleError));
   }
