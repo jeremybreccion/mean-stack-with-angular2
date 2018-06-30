@@ -1,6 +1,6 @@
 <div class="flex-container" color="primary">
   <div class="register-div">
-    <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && register()">
+    <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && register(registerForm)">
       <mat-form-field>
         <input type="email" matInput placeholder="Email" name="email" [(ngModel)]="registerClass.email" #email="ngModel" required
           email>
@@ -16,8 +16,9 @@
       <br/>
       <mat-form-field>
         <input type="password" matInput placeholder="Password" [(ngModel)]="registerClass.password" name="password" #password="ngModel"
-          required>
+          appValidateEqual validateEqual="confirmPassword" reverse="true" required>
         <mat-error *ngIf="password.errors?.required">Please enter a value</mat-error>
+        <mat-error *ngIf="password.errors?.equal">Please enter the correct password</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field>
