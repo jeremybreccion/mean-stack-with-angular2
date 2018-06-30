@@ -5,11 +5,16 @@ const path = require('path');
 
 const port = 8080;
 const index = require('./routes/index');
-
-app.use('/', index);
+const users = require('./routes/users');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//put route declarations here
+app.use('/', index);
+app.use('/users', users);
+
+
 
 app.use(express.static(__dirname + '/client/dist/client/'));
 
