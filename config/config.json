@@ -1,0 +1,5 @@
+{
+    "database": "mongodb://localhost:27017/sample",
+    "token_secret": "asdkljsd&^*KD7HKJJLpsdlsd",
+    "token_expiration": "1m"
+}
