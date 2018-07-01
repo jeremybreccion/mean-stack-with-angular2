@@ -3,7 +3,7 @@
       <button mat-button routerLink="./">Home</button>
       <button mat-button routerLink="./about">About</button>
       <span class="toolbar-spacer"></span>
-      <button mat-button routerLink="../login">Logout</button>
+      <button mat-button (click)="logout()">Logout</button>
   </mat-toolbar>
   <div class="content-page">
     <router-outlet></router-outlet>
