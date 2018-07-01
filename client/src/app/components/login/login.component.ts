@@ -29,8 +29,9 @@ export class LoginComponent implements OnInit {
       //put any to ignore LoginDetails class
       (res: any) => {
         console.log('logged in');
+        this.authService.setToken(res.token);
         this.snackbarService.openSimpleSnackBar('Welcome, ' + res.user.nickname + '!');
-        this.router.navigateByUrl('/main/home');
+        this.router.navigateByUrl((this.authService.redirectUrl) ? this.authService.redirectUrl : '/main/home');
       },
       err => {
         console.log('error', err);
