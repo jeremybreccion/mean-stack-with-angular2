@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
     //when type localhost:4200, it will redirect to main/home
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     {
         path: 'main',
         component: MainComponent,
+        canActivate: [AuthGuardService],
         children: [
             {
                 path: '',
