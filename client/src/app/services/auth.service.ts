@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -35,15 +35,35 @@ export class AuthService {
 
   //if ng serve is used, you must declare the node server address
   domain = 'http://localhost:8080';
+  httpOptions;
+
+  //this will be checked by auth-guard
+  isLoggedIn;
+  //redirect if not authenticated
+  redirectUrl;
 
 
-  register (registerDetails: RegisterDetails): Observable<RegisterDetails> {
+  register(registerDetails: RegisterDetails): Observable<RegisterDetails> {
     return this.http.post<RegisterDetails>(this.domain + '/users/register', registerDetails)
     .pipe(catchError(this.handleError));
   }
 
-  login (loginDetails: LoginDetails): Observable<LoginDetails> {
+  login(loginDetails: LoginDetails): Observable<LoginDetails> {
     return this.http.post<LoginDetails>(this.domain + '/users/login', loginDetails)
     .pipe(catchError(this.handleError));
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+  }
+
+  //is called only during successful login. attach httpOptions to routes that need authentication
+  setToken(token: string) {
+    this.isLoggedIn = true;
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    };
   }
 }
