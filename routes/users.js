@@ -33,11 +33,14 @@ router.post('/login', (req, res) => {
             res.status(400).send(err);
         //compare passwords here
         } else if(aUser && bcrypt.compareSync(req.body.password, aUser.password)) {
-            //to manipulate results from mongoose, it must be converted to an object
-            /* aUser = aUser.toObject();
-            delete aUser.password; */
             //generate jwt token
             const token = jwt.sign({ userId: aUser._id }, config.token_secret, { expiresIn: config.token_expiration });
+
+            //to manipulate results from mongoose, it must be converted to an object
+            aUser = aUser.toObject();
+            //delete password & id 
+            delete aUser.password, aUser._id;
+            //aUser must only have email & nickname
             res.status(200).send({ user: aUser, token: token });
         } else {
             //incorrect input
