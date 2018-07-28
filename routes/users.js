@@ -41,6 +41,9 @@ router.post('/login', (req, res) => {
             //delete password & id 
             delete aUser.password, aUser._id;
             //aUser must only have email & nickname
+            req.session.user = aUser;
+            req.session.token = token;
+
             res.status(200).send({ user: aUser, token: token });
         } else {
             //incorrect input
@@ -48,6 +51,23 @@ router.post('/login', (req, res) => {
             res.status(400).send({ AUTH_FAIL: true });
         }
     });
+});
+
+router.get('/current', (req, res) => {
+    console.log('getting user');
+    console.log(req.session.user);
+    if(req.session.user) {
+        res.status(200).send({user: req.session.user, token: req.session.token});
+    } else {
+        console.log('no session');
+        res.status(400).send();
+    }
+});
+
+router.get('/logout', (req, res) => {
+    console.log('logging out');
+    delete req.session.user, req.session.token;
+    res.status(200).send();
 });
 
 module.exports = router;
