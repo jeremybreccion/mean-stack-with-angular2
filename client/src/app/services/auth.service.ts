@@ -14,6 +14,11 @@ export class LoginDetails {
   password: string;
 }
 
+export class UserDetails {
+  email: string;
+  nickname: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +36,17 @@ export class AuthService {
     return throwError(error);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    alert('auth service constructor');
+    /* this.current().subscribe(
+      (res: any) => {
+        alert('got user data');
+        this.setToken(res.token);
+      },
+      err => {
+        console.log(err);
+      }); */
+  }
 
   //if ng serve is used, you must declare the node server address
   domain = 'http://localhost:8080';
@@ -53,12 +68,21 @@ export class AuthService {
     .pipe(catchError(this.handleError));
   }
 
-  logout() {
-    this.isLoggedIn = false;
+  current(): Observable<any> {
+    return this.http.get<any>(this.domain + '/users/current').pipe(catchError(this.handleError));
+  }
+
+  logout(){
+    alert('logging out');
+    this.http.get(this.domain + '/users/logout').subscribe(() => {
+      this.isLoggedIn = false;
+      alert('logged out');
+    });
   }
 
   //is called only during successful login. attach httpOptions to routes that need authentication
   setToken(token: string) {
+    alert('set token');
     this.isLoggedIn = true;
     this.httpOptions = {
       headers: new HttpHeaders({
