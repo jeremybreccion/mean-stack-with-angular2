@@ -18,16 +18,17 @@ const appRoutes: Routes = [
     //for login & register, cannot access if user is already logged in
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'main',
         component: MainComponent,
-        canActivate: [AuthGuardService],
         children: [
             {
                 path: '',
@@ -36,11 +37,13 @@ const appRoutes: Routes = [
             },
             {
                 path: 'home',
-                component: HomeComponent
+                component: HomeComponent,
+                canActivate: [AuthGuardService]
             },
             {
                 path: 'about',
-                component: AboutComponent
+                component: AboutComponent,
+                canActivate: [AuthGuardService]
             }
         ]
     },
