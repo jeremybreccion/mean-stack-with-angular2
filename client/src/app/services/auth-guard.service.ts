@@ -15,7 +15,7 @@ export class AuthGuardService implements CanActivate {
      * code below does not work
      */
 
-    if(this.authService.isLoggedIn === undefined) {
+    if(!this.authService.isLoggedIn) {
       if(url === '/login' || url === '/register') {
         return true;
       } else {
