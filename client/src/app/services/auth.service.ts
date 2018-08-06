@@ -53,7 +53,7 @@ export class AuthService {
   httpOptions;
 
   //this will be checked by auth-guard
-  isLoggedIn;
+  isLoggedIn = false;
   //redirect if not authenticated
   redirectUrl;
 
@@ -72,17 +72,12 @@ export class AuthService {
     return this.http.get<any>(this.domain + '/users/current').pipe(catchError(this.handleError));
   }
 
-  logout(){
-    alert('logging out');
-    this.http.get(this.domain + '/users/logout').subscribe(() => {
-      this.isLoggedIn = false;
-      alert('logged out');
-    });
+  logout(): Observable<any> {
+    return this.http.get<any>(this.domain + '/users/logout').pipe(catchError(this.handleError));
   }
 
   //is called only during successful login. attach httpOptions to routes that need authentication
   setToken(token: string) {
-    alert('set token');
     this.isLoggedIn = true;
     this.httpOptions = {
       headers: new HttpHeaders({
