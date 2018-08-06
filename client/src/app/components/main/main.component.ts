@@ -15,8 +15,10 @@ export class MainComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
-    this.router.navigateByUrl('/login');
+    this.authService.logout().subscribe(() => {
+      this.authService.isLoggedIn = false;
+      this.router.navigateByUrl('/login');
+    });
   }
 
 }
